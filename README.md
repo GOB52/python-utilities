@@ -11,6 +11,7 @@ Output version definition C style header file if you want.
 
 ### Usage
 
+Execute on the directory where library.properties or library.json are located.  
 ```
 python3  raise_version.py [-h] [--raising {MAJOR,MINOR,PATCH}] [--source SOURCE] [--prefix PREFIX] [--info] [--verbose]
 ```
