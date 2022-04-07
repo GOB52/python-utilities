@@ -1,36 +1,35 @@
 # python-utilities
-[日本語/Japanese](README.ja.md)  
-Utility scripts by Pyhton3  
+Python3 によるユーティリティスクリプト
 
 ## raise_version.py
 
-### Overview
-Raise version by [semantic versioning](https://semver.org/) for Arduino Library.  
-Raise version and update **library.properties** and **library.json** if exists.  
-Output version definition C style header file if you want.  
+### 概要
+Ardiono ライブラリの為の[セマンティックバージョニング](https://semver.org/lang/ja/)に基づくバージョン進行  
+バージョンを上げ、存在すれば **library.properties** と **library.json** を更新します。  
+必要ならば C スタイルのバージョン define ヘッダを出力します。
 
-### Usage
+### 使い方
 
 ```
 python3  raise_version.py [-h] [--raising {MAJOR,MINOR,PATCH}] [--source SOURCE] [--prefix PREFIX] [--info] [--verbose]
 ```
 
-|option|description|
+| オプション | 説明 |
 ----|---- 
-| --raising {MAJOR,MINOR,PATCH}, -r {MAJOR,MINOR,PATCH} |  Increment target (PATCH as default) |
-|--source SOURCE, -s SOURCE |  Output source file path |
-| --prefix PREFIX, -p PREFIX |  Definition prefix for source (require if --source) |
-|  --info, -i | Show version from property and json if exists|
+| --raising {MAJOR,MINOR,PATCH}, -r {MAJOR,MINOR,PATCH} | 進行するバージョン区分の指定(デフォルトではPATCH) |
+|--source SOURCE, -s SOURCE |  C スタイルヘッダのパス名 |
+| --prefix PREFIX, -p PREFIX | C スタイルヘッダのシンボルに付くプレフィクス(--source指定時には必須) |
+|  --info, -i | properties,json のバージョンを表示 |
 
 
-### e.g.
-If library.properties and library.json has version 2.3.4  
+### 例
+library.properties and library.json のバージョンが 2.3.4 とする  
 ```
 python3 raise_version.py -v --raising MINOR  --source lib_version.hpp --prefix YOUR_LIBRARY_PREFIX
 ```
 
-Raise from **2.3.4** to **2.4.0**  
-Update library.properties and library.json  
+バージョンが **2.3.4** から **2.4.0** へ進行する  
+library.properties と library.json が更新される  
 
 library.properties  
 ```
@@ -42,7 +41,7 @@ library.json
   "version": "2.4.0",
 ```
 
-Output C style header  
+C スタイルヘッダ出力  
 lib\_version.hpp  
 ```C
 #ifndef YOUR_LIBRARY_PREFIX_VERSION_HPP
@@ -60,4 +59,3 @@ lib\_version.hpp
 
 #endif
 ```
-
