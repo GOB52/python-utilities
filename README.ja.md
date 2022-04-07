@@ -9,6 +9,7 @@ Ardiono ライブラリの為の[セマンティックバージョニング](htt
 必要ならば C スタイルのバージョン define ヘッダを出力します。
 
 ### 使い方
+library.properties か library.json があるディレクトリ上で実行のこと。  
 
 ```
 python3  raise_version.py [-h] [--raising {MAJOR,MINOR,PATCH}] [--source SOURCE] [--prefix PREFIX] [--info] [--verbose]
