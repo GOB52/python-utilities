@@ -81,6 +81,7 @@ def output_header(path, prefix, major, minor, patch):
 def main():
     parser = argparse.ArgumentParser(description='Raise Version by semantics versioning.')
 
+    parser.add_argument('--execute', '-e', action='store_true', help="Do raising. dry-run if not set")
     parser.add_argument('--raising', '-r', default='PATCH', choices=['MAJOR','MINOR', 'PATCH'], help='Increment target (PATCH as default)')
     parser.add_argument('--source', '-s', type=str, help='Output source file path')
     parser.add_argument('--prefix', '-p', type=str, help='Definition prefix for source (require if --source)')
@@ -113,13 +114,13 @@ def main():
 
     version = versions[0].split('.')
     major, minor, patch = [int(v) for v in version]
-    major = major or 0
-    minor = minor or 0
-    patch = patch or 0
+    omajor = major = major or 0
+    ominor = minor = minor or 0
+    opatch = patch = patch or 0
 
     if args.verbose:
         print('Raise {} from {}.{},{}'.format(args.raising, major, minor, patch))
-        
+
     if args.raising == 'PATCH':
         patch += 1
     elif args.raising == 'MINOR':
@@ -129,6 +130,12 @@ def main():
         major += 1
         minor = 0
         patch = 0
+       
+    # Dry-run
+    if not args.execute:
+        print('Dry-run : Raise from {}.{}.{} to {}.{}.{}'.format(omajor, ominor, opatch, major, minor, patch))
+        print('If you want to do raising, set --execute or -e')
+        return 0
 
     if args.verbose:
         print('Raise version to {}.{},{}'.format(major, minor, patch))

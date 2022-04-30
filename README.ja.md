@@ -12,11 +12,12 @@ Ardiono ライブラリの為の[セマンティックバージョニング](htt
 library.properties か library.json があるディレクトリ上で実行のこと。  
 
 ```
-python3  raise_version.py [-h] [--raising {MAJOR,MINOR,PATCH}] [--source SOURCE] [--prefix PREFIX] [--info] [--verbose]
+python3 raise_version.py [-h] [--execute] [--raising {MAJOR,MINOR,PATCH}] [--source SOURCE] [--prefix PREFIX] [--info] [--verbose]
 ```
 
 | オプション | 説明 |
 ----|---- 
+| --execute, -e | バージョン進行を実行する **つけない場合は Dry-run(予行)** |
 | --raising {MAJOR,MINOR,PATCH}, -r {MAJOR,MINOR,PATCH} | 進行するバージョン区分の指定(デフォルトではPATCH) |
 |--source SOURCE, -s SOURCE |  C スタイルヘッダのパス名 |
 | --prefix PREFIX, -p PREFIX | C スタイルヘッダのシンボルに付くプレフィクス(--source指定時には必須) |
@@ -26,7 +27,7 @@ python3  raise_version.py [-h] [--raising {MAJOR,MINOR,PATCH}] [--source SOURCE]
 ### 例
 library.properties and library.json のバージョンが 2.3.4 とする  
 ```
-python3 raise_version.py -v --raising MINOR  --source lib_version.hpp --prefix YOUR_LIBRARY_PREFIX
+python3 raise_version.py -execute --raising MINOR --source lib_version.hpp --prefix YOUR_LIBRARY_PREFIX
 ```
 
 バージョンが **2.3.4** から **2.4.0** へ進行する  

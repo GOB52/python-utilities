@@ -13,13 +13,14 @@ Output version definition C style header file if you want.
 
 Execute on the directory where library.properties or library.json are located.  
 ```
-python3  raise_version.py [-h] [--raising {MAJOR,MINOR,PATCH}] [--source SOURCE] [--prefix PREFIX] [--info] [--verbose]
+python3 raise_version.py [-h] [--execute] [--raising {MAJOR,MINOR,PATCH}] [--source SOURCE] [--prefix PREFIX] [--info] [--verbose]
 ```
 
 |option|description|
 ----|---- 
+| --execute, -e | Do raising. **Dry-run if not set** |
 | --raising {MAJOR,MINOR,PATCH}, -r {MAJOR,MINOR,PATCH} |  Increment target (PATCH as default) |
-|--source SOURCE, -s SOURCE |  Output source file path |
+| --source SOURCE, -s SOURCE |  Output source file path |
 | --prefix PREFIX, -p PREFIX |  Definition prefix for source (require if --source) |
 |  --info, -i | Show version from property and json if exists|
 
@@ -27,7 +28,7 @@ python3  raise_version.py [-h] [--raising {MAJOR,MINOR,PATCH}] [--source SOURCE]
 ### e.g.
 If library.properties and library.json has version 2.3.4  
 ```
-python3 raise_version.py -v --raising MINOR  --source lib_version.hpp --prefix YOUR_LIBRARY_PREFIX
+python3 raise_version.py -execute --raising MINOR --source lib_version.hpp --prefix YOUR_LIBRARY_PREFIX
 ```
 
 Raise from **2.3.4** to **2.4.0**  
@@ -61,4 +62,3 @@ lib\_version.hpp
 
 #endif
 ```
-
