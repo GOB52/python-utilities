@@ -28,7 +28,7 @@ python3 raise_version.py [-h] [--execute] [--raising {MAJOR,MINOR,PATCH}] [--sou
 ### e.g.
 If library.properties and library.json has version 2.3.4  
 ```
-python3 raise_version.py -execute --raising MINOR --source lib_version.hpp --prefix YOUR_LIBRARY_PREFIX
+python3 raise_version.py --execute --raising MINOR --source lib_version.hpp --prefix YOUR_LIBRARY_PREFIX
 ```
 
 Raise from **2.3.4** to **2.4.0**  

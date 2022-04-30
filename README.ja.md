@@ -27,7 +27,7 @@ python3 raise_version.py [-h] [--execute] [--raising {MAJOR,MINOR,PATCH}] [--sou
 ### 例
 library.properties and library.json のバージョンが 2.3.4 とする  
 ```
-python3 raise_version.py -execute --raising MINOR --source lib_version.hpp --prefix YOUR_LIBRARY_PREFIX
+python3 raise_version.py --execute --raising MINOR --source lib_version.hpp --prefix YOUR_LIBRARY_PREFIX
 ```
 
 バージョンが **2.3.4** から **2.4.0** へ進行する  
